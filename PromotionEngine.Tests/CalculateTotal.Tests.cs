@@ -24,13 +24,26 @@ namespace PromotionEngine.Tests
         [Fact]
         public void GetTotal_GivenItemsPromotionsCart1Values_ReturnTotalCartValueAsInt()
         {
-            var calculateTotal = new CalculateTotal();
-            List<Item> items = data.Items;
-            List<Promotion> promotions = data.Promotions;
-            Cart cart1 = data.Cart1;
+            var calculateTotal = _calculateTotalFixture.calculateTotal;
             int expectedTotal = 100;
             Assert.Equal(expectedTotal, calculateTotal
-                .GetTotal(items, promotions, cart1));
+                .GetTotal(_calculateTotalFixture.items, _calculateTotalFixture.promotions, _calculateTotalFixture.cart1));
+        }
+        [Fact]
+        public void GetTotal_GivenItemsPromotionsCart2Values_ReturnTotalCartValueAsInt()
+        {
+            var calculateTotal = _calculateTotalFixture.calculateTotal;
+            int expectedTotal = 370;
+            Assert.Equal(expectedTotal, calculateTotal
+                .GetTotal(_calculateTotalFixture.items, _calculateTotalFixture.promotions, _calculateTotalFixture.cart2));
+        }
+        [Fact]
+        public void GetTotal_GivenItemsPromotionsCart3Values_ReturnTotalCartValueAsInt()
+        {
+            var calculateTotal = _calculateTotalFixture.calculateTotal;
+            int expectedTotal = 280;
+            Assert.Equal(expectedTotal, calculateTotal
+                .GetTotal(_calculateTotalFixture.items, _calculateTotalFixture.promotions, _calculateTotalFixture.cart3));
         }
 
         [Fact]
