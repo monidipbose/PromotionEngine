@@ -34,7 +34,37 @@ namespace PromotionEngine
                         }
                         else
                         {
-                            
+                            List<char> itemsInPromo = promo.Items;
+                            List<int> priceOfItemsInPromo = new List<int>();
+                            List<int> quantityOfItemsInCart = new List<int>();
+                            foreach (var itemInPromo in itemsInPromo)
+                            {
+                                if (!promoAppliedItems.Contains(itemInPromo) && cart.Items.Contains(itemInPromo))
+                                {
+                                    priceOfItemsInPromo.Add(items.FirstOrDefault(a => a.Name == itemInPromo).Price);
+                                    quantityOfItemsInCart.Add(cart.Quantity[cart.Items.IndexOf(itemInPromo)]);
+                                }
+                            }
+                            if (itemsInPromo.Count == priceOfItemsInPromo.Count)
+                            {
+                                int afterPromo = applyPromoOnMultiple(itemsInPromo, priceOfItemsInPromo, quantityOfItemsInCart, promo);
+                                if (afterPromo != 0)
+                                {
+                                    total += afterPromo;
+                                    foreach (var itemInPromo in itemsInPromo)
+                                    {
+                                        promoAppliedItems.Add(itemInPromo);
+                                    }
+                                }
+                                else
+                                {
+                                    total += itemPrice * cart.Quantity[i];
+                                }
+                            }
+                            else
+                            {
+                                total += itemPrice * cart.Quantity[cart.Items.IndexOf(item)];
+                            }
                         }
                     }
                     else
@@ -65,6 +95,33 @@ namespace PromotionEngine
             if (quantity >= promotion.Quantity[0])
             {
                 total = ((quantity / promotion.Quantity[0]) * promotion.Price) + ((quantity % promotion.Quantity[0]) * itemPrice);
+            }
+            return total;
+        }
+
+        public int applyPromoOnMultiple(List<char> items, List<int> itemsPrice, List<int> quantities, Promotion promotion)
+        {
+            int total = 0;
+            int amount = 0;
+            for (int i = 0; i < quantities.Count; i++)
+            {
+                if (quantities[i] < promotion.Quantity[i])
+                {
+                    return total;
+                }
+            }
+            while (!quantities.Contains(0))
+            {
+                for (int i = 0; i < items.Count; i++)
+                {
+                    quantities[i] = quantities[i] - promotion.Quantity[i];
+                }
+                amount += promotion.Price;
+            }
+            total += amount;
+            for (int i = 0; i < items.Count; i++)
+            {
+                total += (quantities[i] * itemsPrice[i]);
             }
             return total;
         }
