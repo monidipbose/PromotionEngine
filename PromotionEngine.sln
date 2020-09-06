@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromotionEngine", "PromotionEngine\PromotionEngine.csproj", "{566D83B1-CDFD-48B0-9361-73D9ECCE0F83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromotionEngine.Tests", "PromotionEngine.Tests\PromotionEngine.Tests.csproj", "{A63C5898-5018-48F1-AE3B-02D7ADE90BD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{566D83B1-CDFD-48B0-9361-73D9ECCE0F83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{566D83B1-CDFD-48B0-9361-73D9ECCE0F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{566D83B1-CDFD-48B0-9361-73D9ECCE0F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{566D83B1-CDFD-48B0-9361-73D9ECCE0F83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A63C5898-5018-48F1-AE3B-02D7ADE90BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A63C5898-5018-48F1-AE3B-02D7ADE90BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A63C5898-5018-48F1-AE3B-02D7ADE90BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A63C5898-5018-48F1-AE3B-02D7ADE90BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B98FF870-5103-4494-8B52-4597E1C6DDC0}
+	EndGlobalSection
+EndGlobal
