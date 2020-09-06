@@ -51,5 +51,30 @@ namespace PromotionEngine.Tests
             var result = calculateTotal.GetPromotion(itemName, _calculateTotalFixture.promotions);
             Assert.Null(result);
         }
+
+        [Fact]
+        public void applyPromoOnSingle_GivenItemNameItemPriceQuantityAndPromotion_ReturnTotalAmountForThisItemAfterApplyPromotion()
+        {
+            var calculateTotal = _calculateTotalFixture.calculateTotal;
+            char itemName = 'A';
+            int itemPrice = 50;
+            int itemQuantity = 5;
+            int result = calculateTotal
+                .applyPromoOnSingle(itemName, itemPrice, itemQuantity, calculateTotal.GetPromotion(itemName, _calculateTotalFixture.promotions));
+            int expectedAmount = 230;
+            Assert.Equal(expectedAmount, result);
+        }
+        [Fact]
+        public void applyPromoOnSingle_GivenItemNameItemPriceQuantityAndPromotion_ReturnZeroAsQuantityIsLesserForApplyingPromotion()
+        {
+            var calculateTotal = _calculateTotalFixture.calculateTotal;
+            char itemName = 'A';
+            int itemPrice = 50;
+            int itemQuantity = 1;
+            int result = calculateTotal
+                .applyPromoOnSingle(itemName, itemPrice, itemQuantity, calculateTotal.GetPromotion(itemName, _calculateTotalFixture.promotions));
+            int expectedAmount = 0;
+            Assert.Equal(expectedAmount, result);
+        }
     }
 }
